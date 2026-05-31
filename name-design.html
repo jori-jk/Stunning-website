@@ -5,12 +5,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Name Design Generator</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0f0f1a;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .container {
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      background: linear-gradient(135deg, #ff6b6b, #ffa94d, #ffd93d, #6bcb77, #4d96ff, #9b59b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+    .input-group { margin-bottom: 20px; }
+    .input-group input {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.2rem;
+      border-radius: 12px;
+      border: 2px solid #333;
+      background: #1a1a2e;
+      color: white;
+      text-align: center;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .input-group input:focus { border-color: #4d96ff; }
+    .result {
+      font-size: 3.5rem;
+      font-weight: 900;
+      min-height: 80px;
+      margin: 20px 0;
+      background: linear-gradient(135deg, #ff6b6b, #ffa94d, #ffd93d, #6bcb77, #4d96ff, #9b59b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      word-break: break-word;
+      letter-spacing: 4px;
+    }
+    .btn {
+      padding: 12px 50px;
+      border-radius: 30px;
+      border: none;
+      background: #4d96ff;
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .btn:hover { background: #6baaff; }
+    .btn:active { transform: scale(0.95); }
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      color: #888;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+    .back-link:hover { color: #4d96ff; }
+  </style>
 </head>
 <body>
-  <div class="container" style="text-align: center; padding-top: 50px;">
-    <h1>✨ Name Design Generator</h1>
-    <p style="color: #aaa; font-size: 1.2rem;">Coming soon...</p>
-    <a href="index.html" style="color: #4d96ff; text-decoration: none; margin-top: 20px; display: inline-block;">← Back to Home</a>
+  <div class="container">
+    <h1>Name Design</h1>
+    <div class="input-group">
+      <input type="text" id="nameInput" placeholder="Enter your name" autofocus>
+    </div>
+    <div id="result" class="result"></div>
+    <button class="btn" onclick="generateName()">Generate</button>
+    <a href="index.html" class="back-link">← Back to Home</a>
   </div>
+  <script>
+    function generateName() {
+      var name = document.getElementById('nameInput').value;
+      if (name.trim() === '') {
+        document.getElementById('result').textContent = 'Enter a name';
+        return;
+      }
+      document.getElementById('result').textContent = name;
+    }
+    document.getElementById('nameInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') generateName();
+    });
+  </script>
 </body>
 </html>
