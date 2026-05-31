@@ -5,12 +5,99 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quote Generator</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0f0f1a;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .container {
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      background: linear-gradient(135deg, #ff6b6b, #ffa94d, #ffd93d, #6bcb77, #4d96ff, #9b59b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+    .quote-box {
+      background: #1a1a2e;
+      padding: 30px;
+      border-radius: 16px;
+      border: 2px solid #333;
+      margin: 20px 0;
+      min-height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .quote-box p {
+      font-size: 1.4rem;
+      font-style: italic;
+      color: #ddd;
+    }
+    .btn {
+      padding: 12px 50px;
+      border-radius: 30px;
+      border: none;
+      background: #4d96ff;
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 600;
+    }
+    .btn:hover { background: #6baaff; }
+    .btn:active { transform: scale(0.95); }
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      color: #888;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+    .back-link:hover { color: #4d96ff; }
+  </style>
 </head>
 <body>
-  <div class="container" style="text-align: center; padding-top: 50px;">
-    <h1>💬 Quote Generator</h1>
-    <p style="color: #aaa; font-size: 1.2rem;">Coming soon...</p>
-    <a href="index.html" style="color: #4d96ff; text-decoration: none; margin-top: 20px; display: inline-block;">← Back to Home</a>
+  <div class="container">
+    <h1>Quote Generator</h1>
+    <div class="quote-box">
+      <p id="quoteDisplay">Click Generate to get a quote</p>
+    </div>
+    <button class="btn" onclick="generateQuote()">Generate Quote</button>
+    <a href="index.html" class="back-link">← Back to Home</a>
   </div>
+  <script>
+    var quotes = [
+      "The only way to do great work is to love what you do. - Steve Jobs",
+      "In the middle of difficulty lies opportunity. - Albert Einstein",
+      "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+      "Believe you can and you're halfway there. - Theodore Roosevelt",
+      "It does not matter how slowly you go as long as you do not stop. - Confucius",
+      "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
+      "You miss 100% of the shots you don't take. - Wayne Gretzky",
+      "Be yourself; everyone else is already taken. - Oscar Wilde",
+      "Two roads diverged in a wood, and I—I took the one less traveled by. - Robert Frost",
+      "The best time to plant a tree was 20 years ago. The second best time is now."
+    ];
+    function generateQuote() {
+      var randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById('quoteDisplay').textContent = quotes[randomIndex];
+    }
+    generateQuote();
+  </script>
 </body>
 </html>
